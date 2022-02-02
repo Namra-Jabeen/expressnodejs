@@ -1,6 +1,6 @@
-import {todos} from "../../data";
-import {ITodo} from "../../interfaces/ITodos";
+import { todos } from "../../data";
+import { ITodo } from "../../interfaces/ITodos";
 
-export async function listTodos(): Promise<ITodo[]>{
-    return Promise.resolve(todos);
+export async function listTodos(): Promise<ITodo[]> {
+  return Promise.resolve(todos);
 }
