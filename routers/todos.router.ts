@@ -3,6 +3,7 @@ import * as todos from '../todos/index';
 
 const router = express.Router();
 router.get('/todos',todos.listTodosController);
+router.put('/todos',todos.updateTodoController);
 router.delete('/todos',todos.deleteTodoController);
 router.post('/todos',todos.createTodosController);
 export default router;
