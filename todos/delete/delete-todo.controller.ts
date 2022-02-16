@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { ITodo } from "../../interfaces/ITodos";
 import { deleteTodo } from "./delete-todo";
 
 export async function deleteTodoController(req: Request, res: Response) {
-  const todo: ITodo = await deleteTodo(req.body);
-  if (todo == null) {
-    res.send(`Todo ${req.body} not found`);
+  try {
+    const success: { message: string } = await deleteTodo(req.params.id);
+    res.send(success);
+  } catch (err) {
+    console.error(err);
+    res.send(500, { message: "id not found" });
   }
-  res.send(todo);
 }
