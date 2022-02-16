@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { ITodo } from "../../interfaces/ITodos";
 import { updateTodo } from "./update-todos";
 
 export async function updateTodoController(req: Request, res: Response) {
-  const todo: ITodo = await updateTodo(req.body);
-  if (todo == null) {
-    res.send(`Todo ${req.body} not found`);
+  try {
+    const success: { message: string } = await updateTodo(req.body);
+    res.send(success);
+  } catch (err) {
+    console.error(err);
+    res.send(500, { message: "failed" });
   }
-  res.send(todo);
 }
